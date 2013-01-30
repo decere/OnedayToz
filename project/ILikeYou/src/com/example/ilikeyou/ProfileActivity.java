@@ -187,4 +187,3 @@ public class ProfileActivity extends Activity implements PostExecHandler {
 		}
 	}
 }
->>>>>>> b7cf955d50905e8e80d6cf0bc29ce34a6a45fef7

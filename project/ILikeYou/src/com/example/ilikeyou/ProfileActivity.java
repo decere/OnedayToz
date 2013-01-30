@@ -19,9 +19,9 @@ import android.widget.EditText;
 
 import com.example.ilikeyou.network.HttpGetAsyncTask;
 import com.example.ilikeyou.network.HttpGetParams;
-import com.example.ilikeyou.network.ExecutionHandler;
+import com.example.ilikeyou.network.PostExecHandler;
 
-public class ProfileActivity extends Activity implements ExecutionHandler {
+public class ProfileActivity extends Activity implements PostExecHandler {
 
 	private HttpGetAsyncTask mHttpGetTask;
 	private View mProfileStatusView;

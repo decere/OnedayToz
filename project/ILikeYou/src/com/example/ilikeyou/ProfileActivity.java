@@ -1,6 +1,7 @@
 package com.example.ilikeyou;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -10,6 +11,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -19,9 +21,14 @@ import android.widget.EditText;
 
 import com.example.ilikeyou.network.HttpGetAsyncTask;
 import com.example.ilikeyou.network.HttpGetParams;
-import com.example.ilikeyou.network.ExecutionHandler;
+import com.example.ilikeyou.network.PostExecHandler;
+import com.facebook.Request;
+import com.facebook.Response;
+import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.model.GraphUser;
 
-public class ProfileActivity extends Activity implements ExecutionHandler {
+public class ProfileActivity extends Activity implements PostExecHandler {
 
 	private HttpGetAsyncTask mHttpGetTask;
 	private View mProfileStatusView;
@@ -58,10 +65,53 @@ public class ProfileActivity extends Activity implements ExecutionHandler {
 					}
 				});
 		
-		
-		
+		findViewById(R.id.get_facebook_friendlist_button).setOnClickListener(
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// start Facebook Login
+						Session.openActiveSession(ProfileActivity.this, true, new Session.StatusCallback() {
+
+							// callback when session changes state
+							@Override
+							public void call(Session session, SessionState state, Exception exception) {
+								if (session.isOpened()) {
+									// get Friends list
+									Request.executeMyFriendsRequestAsync(session, new Request.GraphUserListCallback() {
+
+										@Override
+										public void onCompleted(List<GraphUser> users, Response response) {
+											String FriendList = "";
+											if (users != null) {
+												for(int i=0; i<users.size(); i++) {
+													FriendList += users.get(i).getName() + ", " + users.get(i).getId() + "\n";
+												}
+												EditText detail = (EditText) findViewById(R.id.profile_detail_text);
+												if(detail != null) {
+													detail.setText(FriendList);
+												}
+											}
+										}
+									});
+								}
+							}
+						});
+
+
+					}
+				}
+		);
 	}
 
+	
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+    }
+    
+    
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -137,3 +187,4 @@ public class ProfileActivity extends Activity implements ExecutionHandler {
 		}
 	}
 }
+>>>>>>> b7cf955d50905e8e80d6cf0bc29ce34a6a45fef7

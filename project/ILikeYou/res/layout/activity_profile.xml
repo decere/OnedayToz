@@ -34,11 +34,11 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/profile_detail"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/profile_detail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="464dp"
         tools:context=".MainActivity" >
 
         <ImageView
@@ -58,7 +58,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageView1"
+            android:layout_below="@+id/get_facebook_friendlist_button"
             android:ems="10"
             android:inputType="textMultiLine" >
 
@@ -73,6 +73,14 @@
             android:layout_marginTop="14dp"
             android:layout_toRightOf="@+id/imageView1"
             android:text="Test HttpGet... \n(http://m.daum.net)" />
+
+        <Button
+            android:id="@+id/get_facebook_friendlist_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/get_profile_button"
+            android:layout_toRightOf="@+id/imageView1"
+            android:text="Get facebook friendlist" />
 
     </RelativeLayout>
 

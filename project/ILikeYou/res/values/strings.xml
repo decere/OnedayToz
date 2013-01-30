@@ -7,5 +7,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_friend_detail">Friend Detail</string>
     <string name="title_friend_list">Friends</string>
+    <string name="app_id">589762691040320</string>    
 
 </resources>

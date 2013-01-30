@@ -24,7 +24,7 @@ import android.util.Log;
 public class HttpGetAsyncTask extends
 		AsyncTask<HttpGetParams, Void, HttpResponse> {
 
-	private ExecutionHandler handler;
+	private PostExecHandler handler;
 
 	@Override
 	protected HttpResponse doInBackground(HttpGetParams... httpGetParams) {

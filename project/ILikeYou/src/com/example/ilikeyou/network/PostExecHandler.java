@@ -2,6 +2,6 @@ package com.example.ilikeyou.network;
 
 import org.apache.http.HttpEntity;
 
-public interface ExecutionHandler {
+public interface PostExecHandler {
 	void run(HttpEntity entity);
 }

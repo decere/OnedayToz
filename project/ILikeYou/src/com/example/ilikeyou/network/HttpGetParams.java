@@ -2,19 +2,19 @@ package com.example.ilikeyou.network;
 
 
 public class HttpGetParams {
-	public HttpGetParams(String url, ExecutionHandler handler) {
+	public HttpGetParams(String url, PostExecHandler handler) {
 		this.url = url;
 		this.handler = handler;
 		
 	}
 	private String url;
-	private ExecutionHandler handler;
+	private PostExecHandler handler;
 	
 	public String getUrl() {
 		return url;
 	}
 	
-	public ExecutionHandler getHandler() {
+	public PostExecHandler getHandler() {
 		return handler;
 	}
 
